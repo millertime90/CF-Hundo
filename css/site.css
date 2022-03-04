@@ -5,6 +5,19 @@
     --white-color: #DFF3E4; 
 } 
 
+.odd {
+    font-weight: 100; 
+} 
+
+.even {
+    font-weight: bold; 
+}
+
+.logoFont {
+    font-family: 'Alfa Slab One', cursive; 
+    color: rgb(242, 92, 5); 
+}
+
 body {
     color: var(--dark-color); 
 } 
@@ -69,3 +82,7 @@ main>.container {
     bottom: 0;
     width: 100%;
 } 
+
+.nav-item, #btnSubmit {
+    cursor: pointer; 
+}

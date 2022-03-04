@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>CF Hundo: A Coding Project By Scott Miller via CoderFoundry</title>
+    <title>Hundo: A Coding Project By Scott Miller</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,10 +10,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
     <link href="css/site.css" rel="stylesheet" />
+
+    <!-- PRISM CSS -->
     <link href="css/prism.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="img/SM_logomark_dark.png" />
-   <!-- Convert this to an external style sheet -->
+    <link rel="icon" type="image/png" href="img/SM_logomark_dark.png" /> 
+
+    <!-- Google Fonts API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
    <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 </head>
@@ -23,8 +31,8 @@
 <!-- NAV SECTION -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="/img/SM_logomark_dark.PNG" class="d-inline-block align-text-top" alt="Scott Miller Logo Mark" width="30" height="30" /> CF Hundo
+        <a class="navbar-brand logoFont" href="index.html">
+            <img src="/img/SM_logomark_dark.PNG" class="d-inline-block align-text-top" alt="Scott Miller Logo Mark" width="30" height="30" /> HUNDO
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +50,7 @@
                     <a class="nav-link active" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" target="_blank">Git Repo</a>
+                    <a class="nav-link" href="https://github.com/millertime90/CF-Hundo" target="_blank">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" target="_blank">About</a>
@@ -54,24 +62,68 @@
 <!-- MAIN SECTION -->
 <main class="flex-shrink-0">
     <div class="container col-xxl-8 py-5 px-4">
-        <h2 class="border-1 border-bottom border-dark mt-5">The code for CF Hundo</h2>
+        <h2 class="border-1 border-bottom border-dark mt-5">The code for <span class="logoFont">HUNDO</span></h2>
         <div class="row g-5 py-5 row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript">
-                        // Call oralePutos
-                        function helloWorld() {
+                        function displayHundo() { 
 
-                            console.log("Hello world!"); 
-
-                        }
+                            let isEven_orOdd = function(n) { 
+                        
+                                if(n == 0) { return "odd"; } 
+                                else if (n % 2 == 0) { return "even"; } 
+                                else { return "odd"; }
+                            
+                            }; 
+                        
+                            let startValue = document.querySelector("#startValue"); 
+                            let endValue = document.querySelector("#endValue"); 
+                            let results = document.querySelector("#results"); 
+                        
+                            results.innerHTML = ""; 
+                        
+                            for(let i = Number.parseInt(startValue.value); i &lt;= Number.parseInt(endValue.value); i++) { 
+                        
+                                results.append((() => {
+                        
+                                    let tdata = document.createElement("TR"); 
+                                    tdata.innerHTML = `&lt;td class=${isEven_orOdd(i)}>${i}&lt;/td>`; 
+                        
+                                    return tdata; 
+                        
+                                })()); 
+                        
+                            } 
+                        
+                        } 
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5><code>helloWorld</code></h5>
-                <p><code>helloWorld</code> is a function that logs "Hello world!" in the console. Open up the dev tools with <b>ctrl + shift + j</b> and call the function in the console.</p>
+                <p>The code is structured in one function.</p>
+                <h4><code>displayHundo</code></h4>
+                <p><code>displayHundo</code>, when invoked, is the program that runs to display a range of numbers based on user input in the input element fields displayed in "The App" page of this website in accordance to the challenge of this project: to display <code>0</code> and odd numbers with regular font, and even numbers with bold font. The entire block of code scoped in the function consists of four declared and initialized, local variables, functionality to reset the Hundo, and a sub block of code scoped within a for loop which runs per loop as per the expressions of the for loop.</p> 
+                <p>The four variables are as follows in the order in which they are declared:<br />
+                <ul>
+                    <li><code>isEven_orOdd</code></li>
+                    <li><code>startValue</code></li>
+                    <li><code>endValue</code></li>
+                    <li><code>results</code></li>
+                </ul></p>
+                <h5><code>isEven_orOdd</code></h5>
+                <p><code>isEven_orOdd</code> is declared and initialized as a function to return either of two string values, <code>"even"</code>, or <code>"odd"</code>. These values serve to assign value to the class attributes of the table-row HTML elements to be appended by the HTML element node, <code>tbody#results</code>. As this function suggests, these string values are class names which are to reference toward CSS rules each respective table-row HTML element's table-data elements are to inherit. These value returns are determined by the boolean evaluations stated by the if, else if, and else statements. These evaluations compare a passed argument, <code>n</code>, equivalency to <code>0</code> (returning <code>"odd"</code> if true) in the if statement and <code>n % 2</code> equivalency to <code>0</code> (returning <code>"even"</code> if true) in the else if statement. The else statement executes a default value return, <code>"odd"</code>, granted both the if and else if statement evaluations return false. These evaluations are executed consecutively in that order and stop executing granted a true returned evaluation.</p> 
+                <h5><code>startValue</code> & <code>endValue</code></h5>
+                <p><code>startValue</code> & <code>endValue</code> are declared and initialized variables that reference the user input field elements. It's also important to note that while they have a <code>type</code> attribute assigned a string value of <code>"number"</code>, both of these variable's <code>value</code> property are of a string data type. Observing the for loop that follows, these <code>value</code> properties are parsed into numerical data types so that they can be compared as numbers instead of strings so as to avoid a lexicological comparison which would result in a semantic error (i.e. <code>"2" &lt; "100" === false</code>).</p> 
+                <h5><code>results</code></h5>
+                <p><code>results</code> is a declared and initialized variable that references a <code>div</code> HTML element node which is to contain and display the range of numbers returned by the Hundo.</p>
+                <br />
+                <h5>The code that follows . . .</h5>
+                <p>The code that follows when executed: <code>results.innerHTML = ""</code> resets the Hundo upon new user input by accessing <code>results</code>' <code>innerHTML</code> property and assigning it an empty string value (<code>""</code>).</p>
+                <p>The for loop that follows puts the <code>value</code> properties of <code>startValue</code> & <code>endValue</code> to use. In the <em>initial expression</em>, a variable, <code>i</code>, is declared and initialized to <code>startValue</code>'s <code>value</code> property parsed into an integer by it being passed as an argument into the <code>Number.parseInt</code> method. As this is the <em>initial expression</em> of a for loop, this expression is executed only once. Next, the <em>condition expression</em> executes. It compares a less than or equivalancy comparison from <code>i</code> to <code>Number.parseInt(endValue.value)</code>, <code>i</code>, being the "Start Value" (numerical parsed) input by the user and <code>Number.parseInt(endValue.value)</code> being the numerical parsed "End Value" input by the user. So as long as this evaluation returns true, the code block scoped by the for loop will execute per loop consequentially following after the <em>condition expression</em>, then lastly <code>i++</code> executes. This order of operations will continue to execute until the <em>condition expression</em> returns false.</p> 
+                <h5>The for loop's code block</h5>
+                <p>The code block within the for loop when executed calls upon <code>results</code>'s <code>append</code> method. The argument that's passed through this method is of a node type returned by an ES6 IIFE which executes a block of code itself declaring <code>tdata</code>, initializing it to an HTML element node, table-row element by calling the <code>docuemnt</code>'s <code>createElement</code> method with passed argument <code>"TR"</code>, accessing then <code>tdata</code>'s <code>innerHTML</code> property and assigning it a string value utilizing ES6 functionality (${} syntax) to access local/global variables. In this case, it's to stringify either of the aforementioned <code>"even"</code> or <code>"odd"</code> values returned by <code>isEven_orOdd</code> with <code>i</code> passed in as an argument and within this string assigning <code>`${i}`</code> as the <code>innerHTML</code> of what will be rendered as a table-data HTML element as such:<br /><code>`&lt;td class=${isEven_orOdd(i)}&gt;${i}&lt;/td&gt;`</code></p>
+                <p>Lastly, <code>tdata</code> is returned thus appending it to the <code>innerHTML</code> of <code>results</code>.</p>
             </div>
         </div>
     </div>
@@ -98,7 +150,7 @@
                         </a>
                     </div>
                     <div class="col social">
-                        <a href="#" target="_blank">
+                        <a href="https://github.com/millertime90" target="_blank">
                             <i class="fab fa-github fa-2x"></i>
                         </a>
                     </div>
@@ -112,9 +164,12 @@
         </div>
     </div>
 </footer>
+<!-- BOOTSTRAP JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
+
+<!-- PRISM JS -->
 <script src="js/prism.js"></script>
 <script>
     Prism.plugins.NormalizeWhitespace.setDefaults({
@@ -124,6 +179,8 @@
         'right-trim': true
     }); 
 </script>
+
+<!-- Temporary Script --> 
 <script type="text/javascript">
 
     function helloWorld() {
